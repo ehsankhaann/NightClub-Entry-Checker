@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Neon Nights — an interactive night club entry checker. Verify age, ticket and VIP access in style."
+    />
+    <meta name="theme-color" content="#0b0716" />
+    <title>Neon Nights · Club Entry System</title>
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Ambient animated background -->
+    <div class="ambient" aria-hidden="true">
+      <span class="orb orb--one"></span>
+      <span class="orb orb--two"></span>
+      <span class="orb orb--three"></span>
+      <div class="ambient__grid"></div>
+      <div class="ambient__vignette"></div>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Neon Nights home">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M5 24V8l11 9V8l11 16V8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        <span class="brand__name">NEON<span>NIGHTS</span></span>
+      </a>
+      <div class="site-header__meta">
+        <span class="live-dot" aria-hidden="true"></span>
+        DOOR OPEN · EST. 2026
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- Hero -->
+      <section class="hero">
+        <p class="eyebrow"><span class="eyebrow__line"></span> THE DOOR POLICY, REIMAGINED</p>
+        <h1>Are you on <em>the list?</em></h1>
+        <p class="hero__lede">
+          Three quick checks stand between you and the dance floor. Enter your details,
+          get your verdict in a second — no bouncer required.
+        </p>
+        <a class="hero__scroll" href="#checker">
+          Check your entry
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14m0 0 6-6m-6 6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </a>
+      </section>
+
+      <!-- Checker -->
+      <section class="checker" id="checker" aria-label="Entry eligibility checker">
+        <!-- Form panel -->
+        <div class="panel panel--form">
+          <div class="panel__head">
+            <span class="panel__step">01 / GUEST CHECK-IN</span>
+            <h2>Tell us about yourself</h2>
+            <p>Be honest. The door doesn't take excuses.</p>
+          </div>
+
+          <form id="entryForm" novalidate>
+            <!-- Age -->
+            <div class="field">
+              <label for="age">Your age</label>
+              <div class="age-control">
+                <span class="age-control__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.8" /><path d="M5.5 19c.7-3.2 3.3-5 6.5-5s5.8 1.8 6.5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
+                </span>
+                <input
+                  type="number"
+                  id="age"
+                  name="age"
+                  min="1"
+                  max="120"
+                  step="1"
+                  value="19"
+                  placeholder="e.g. 19"
+                  inputmode="numeric"
+                  aria-describedby="ageHint"
+                  required
+                />
+                <span class="age-control__suffix">years</span>
+              </div>
+              <p class="field__hint" id="ageHint">Minimum age for entry is 18.</p>
+              <p class="field__error" id="ageError" role="alert" hidden>Please enter a valid age between 1 and 120.</p>
+            </div>
+
+            <!-- Toggles -->
+            <div class="field">
+              <span class="field__label">Your credentials</span>
+
+              <label class="switch-row" for="ticket">
+                <span class="switch-row__icon switch-row__icon--ticket" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M4 8.5A2.5 2.5 0 0 0 6.5 6h11A2.5 2.5 0 0 0 20 8.5v1a2.5 2.5 0 0 0 0 5v1a2.5 2.5 0 0 0-2.5 2.5h-11A2.5 2.5 0 0 0 4 15.5v-1a2.5 2.5 0 0 0 0-5v-1Z" stroke="currentColor" stroke-width="1.7" /><path d="M13 7v2m0 3v2m0 3v2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-dasharray="1 2" /></svg>
+                </span>
+                <span class="switch-row__copy">
+                  <span class="switch-row__title">I have a ticket</span>
+                  <span class="switch-row__desc">Valid entry pass in hand</span>
+                </span>
+                <input type="checkbox" id="ticket" name="ticket" class="switch-input" checked />
+                <span class="switch" aria-hidden="true"><span class="switch__knob"></span></span>
+              </label>
+
+              <label class="switch-row" for="vip">
+                <span class="switch-row__icon switch-row__icon--vip" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="m3 7 4.5 10L12 10l4.5 7L21 7" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </span>
+                <span class="switch-row__copy">
+                  <span class="switch-row__title">I'm VIP</span>
+                  <span class="switch-row__desc">Access to the premium lounge</span>
+                </span>
+                <input type="checkbox" id="vip" name="vip" class="switch-input" checked />
+                <span class="switch" aria-hidden="true"><span class="switch__knob"></span></span>
+              </label>
+            </div>
+
+            <!-- Presets -->
+            <div class="presets">
+              <span class="presets__label">Quick try:</span>
+              <div class="presets__row">
+                <button type="button" class="preset" data-preset="minor">Underage</button>
+                <button type="button" class="preset" data-preset="noticket">No ticket</button>
+                <button type="button" class="preset" data-preset="regular">Regular</button>
+                <button type="button" class="preset" data-preset="vip">VIP</button>
+              </div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+              <span class="submit-btn__label">Check my entry</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- Result panel -->
+        <div class="panel panel--result" id="resultPanel" data-state="idle" aria-live="polite">
+          <div class="panel__head panel__head--result">
+            <span class="panel__step">02 / THE VERDICT</span>
+            <h2>At the door</h2>
+            <p>Your pass appears here.</p>
+          </div>
+
+          <!-- Idle -->
+          <div class="result-view result-view--idle" id="idleView">
+            <div class="idle-art" aria-hidden="true">
+              <span class="idle-art__ring"></span>
+              <svg viewBox="0 0 64 64" fill="none"><path d="M20 12h24a4 4 0 0 1 4 4v36l-8-5-8 5-8-5-8 5V16a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" /><path d="m27 30 4 4 7-8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </div>
+            <h3>Awaiting guest</h3>
+            <p>Fill in your details and let the door decide.</p>
+          </div>
+
+          <!-- Scanning -->
+          <div class="result-view result-view--scan" id="scanView" hidden>
+            <div class="scanner" aria-hidden="true">
+              <span class="scanner__line"></span>
+              <svg viewBox="0 0 64 64" fill="none"><rect x="10" y="10" width="44" height="44" rx="8" stroke="currentColor" stroke-width="2" stroke-dasharray="5 5" /><path d="M20 32h24" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+            </div>
+            <h3>Scanning credentials…</h3>
+            <p>Checking age, ticket and guest list.</p>
+          </div>
+
+          <!-- Verdict -->
+          <div class="result-view result-view--pass" id="passView" hidden>
+            <div class="pass">
+              <div class="pass__glow" aria-hidden="true"></div>
+              <div class="pass__top">
+                <span class="pass__brand">NEON NIGHTS <span>· ADMIT ONE</span></span>
+                <span class="pass__code" id="passCode">#NN-0000</span>
+              </div>
+              <div class="pass__body">
+                <div class="pass__icon" id="passIcon" aria-hidden="true"></div>
+                <span class="pass__badge" id="passBadge">STATUS</span>
+                <h3 id="passTitle">Verdict</h3>
+                <p id="passMessage">Message</p>
+              </div>
+              <div class="pass__foot">
+                <span id="passAge">AGE —</span>
+                <span id="passTicket">TICKET —</span>
+                <span id="passVip">VIP —</span>
+              </div>
+              <span class="pass__cut pass__cut--left" aria-hidden="true"></span>
+              <span class="pass__cut pass__cut--right" aria-hidden="true"></span>
+            </div>
+            <button type="button" class="again-btn" id="againBtn">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.6M4 4v4h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              Check another guest
+            </button>
+          </div>
+
+          <!-- Stats -->
+          <div class="stats" aria-label="Door statistics">
+            <div class="stat"><strong id="statChecked">0</strong><span>guests checked</span></div>
+            <div class="stat"><strong id="statVip">0</strong><span>VIPs admitted</span></div>
+            <div class="stat"><strong id="statDenied">0</strong><span>turned away</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Rules -->
+      <section class="rules" aria-label="Door policy">
+        <div class="rules__intro">
+          <span class="panel__step">THE FINE PRINT</span>
+          <h2>How the door decides</h2>
+          <p>Simple rules, strictly applied — in this order.</p>
+        </div>
+        <ol class="rules__list">
+          <li class="rule">
+            <span class="rule__num">01</span>
+            <div><h3>Mind the age</h3><p>Under 18? The night isn't for you yet.</p></div>
+          </li>
+          <li class="rule">
+            <span class="rule__num">02</span>
+            <div><h3>Bring a ticket</h3><p>Old enough but no pass? Come back prepared.</p></div>
+          </li>
+          <li class="rule">
+            <span class="rule__num">03</span>
+            <div><h3>Pick your lounge</h3><p>No VIP? The regular floor still waits for you.</p></div>
+          </li>
+          <li class="rule">
+            <span class="rule__num">04</span>
+            <div><h3>VIP treatment</h3><p>All boxes ticked? Premium access is yours.</p></div>
+          </li>
+        </ol>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>NEON NIGHTS · A tiny project with a big neon sign.</span>
+      <span>Built with HTML, CSS & vanilla JS.</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
